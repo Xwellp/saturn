@@ -9,8 +9,8 @@ Available for Minecraft: 1.21.
 
 🧩 Modules
 
-| №  | Module          | Description                                      |
-|----|-----------------|--------------------------------------------------|
-| 1  | Fight Helper    | Automatically aims you and attack entities.      |
-| 2  | Fight Mark      | Additional visual effect for Fight Helper.       |
-| 3  | Swing Animation | Writes command in chat when item close to break. |
+| №  | Module          | Description                                 |
+|----|-----------------|---------------------------------------------|
+| 1  | Fight Helper    | Automatically aims you and attack entities. |
+| 2  | Fight Mark      | Additional visual effect for Fight Helper.  |
+| 3  | Swing Animation | Custom animation for swing.                 |
