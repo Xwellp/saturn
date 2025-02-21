@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "xwellp.saturn.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "SwingProgressMixin",
+    "SwingAnimationMixin",
+    "DisconnectedScreenMixin",
+    "GameRendererMixin",
+    "MouseMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

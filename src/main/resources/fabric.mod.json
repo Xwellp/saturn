@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "saturn",
+  "version": "${version}",
+  "name": "saturn",
+  "description": "Add-on for Meteor that adds useful visuals and utilities for non-vanilla anarchy servers.",
+  "authors": [
+    "xwellp"
+  ],
+  "contact": {
+    "homepage": "https://github.com/Xwellp/saturn",
+    "sources": "https://github.com/Xwellp/saturn"
+  },
+  "icon": "assets/saturn/textures/icon.png",
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "meteor": [
+      "xwellp.saturn.Saturn"
+    ]
+  },
+  "mixins": [
+    "saturn.mixins.json"
+  ],
+  "accessWidener": "saturn.accesswidener",
+  "custom": {
+    "meteor-client:color": "90,120,255"
+  },
+  "depends": {
+    "minecraft": "*",
+    "meteor-client": "*"
+  }
+}
