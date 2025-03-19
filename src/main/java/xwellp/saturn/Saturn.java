@@ -4,6 +4,7 @@ import meteordevelopment.meteorclient.addons.GithubRepo;
 import meteordevelopment.meteorclient.addons.MeteorAddon;
 import meteordevelopment.meteorclient.gui.renderer.GuiRenderer;
 import meteordevelopment.meteorclient.gui.renderer.packer.GuiTexture;
+import meteordevelopment.meteorclient.systems.hud.Hud;
 import meteordevelopment.meteorclient.systems.hud.HudGroup;
 import meteordevelopment.meteorclient.systems.modules.Category;
 import meteordevelopment.meteorclient.systems.modules.Modules;
@@ -43,7 +44,7 @@ public class Saturn extends MeteorAddon {
 
         LOG.info("Registering modules...");
         Modules.get().add(new FightHelper());
-        Modules.get().add(new RotienderBox());
+        Modules.get().add(new FightMark());
         Modules.get().add(new SwingAnimation());
 
         ARROW_UP = GuiRenderer.addTexture(identifier("textures/icons/gui/arrow_up.png"));

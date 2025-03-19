@@ -10,43 +10,41 @@ import xwellp.saturn.Saturn;
 
 import static xwellp.saturn.modules.SwingAnimation.AnimationType.Swipe;
 import static xwellp.saturn.modules.SwingAnimation.AnimationType.Whirl;
-import static xwellp.saturn.modules.SwingAnimation.PositionPreset.First;
-import static xwellp.saturn.modules.SwingAnimation.PositionPreset.Second;
+import static xwellp.saturn.modules.SwingAnimation.AnimationType.Third;
 
 public class SwingAnimation extends Module {
     public static float animspeedMod = 1;
     public static AnimationType AnimationType;
-    public static PositionPreset PositionPreset;
 
     private final SettingGroup sgGeneral = settings.getDefaultGroup();
     private final SettingGroup sgMainHand = settings.createGroup("Main Hand");
     private final SettingGroup sgOffHand = settings.createGroup("Off Hand");
-
+    public final Setting<Double> strength = sgGeneral.add(new DoubleSetting.Builder()
+            .name("сила")
+            .description("сила удара")
+            .defaultValue(7)
+            .min(0.1)
+            .max(10000)
+            .sliderMax(10)
+            .build()
+    );
     public final Setting<Double> speed = sgGeneral.add(new DoubleSetting.Builder()
             .name("animation-speed")
             .description("Swing animation speed")
-            .defaultValue(0.1)
+            .defaultValue(2)
             .min(0)
-            .max(2)
-            .sliderMax(2)
+            .max(500)
+            .sliderMax(3)
             .build()
     );
 
     public final Setting<AnimationType> animationType = sgGeneral.add(new EnumSetting.Builder<AnimationType>()
-            .name("animation-type")
-            .description("Choose animation type")
+            .name("Режим")
+            .description("mode")
             .defaultValue(SwingAnimation.AnimationType.Swipe)
             .build()
     );
 
-    public final Setting<PositionPreset> positionPreset = sgGeneral.add(new EnumSetting.Builder<PositionPreset>()
-            .name("position-preset")
-            .description("Position preset")
-            .defaultValue(SwingAnimation.PositionPreset.First)
-            .build()
-    );
-
-    // Настройки для основной руки
     public final Setting<Double> mainPosX = sgMainHand.add(new DoubleSetting.Builder()
             .name("main-position-x")
             .description("X position offset for main hand")
@@ -165,9 +163,9 @@ public class SwingAnimation extends Module {
     );
 
     private final Setting<Boolean> usePreset = sgGeneral.add(new BoolSetting.Builder()
-            .name("use-preset?")
-            .description("Enable/Disable PositionPreset")
-            .defaultValue(false)
+            .name("Pos-Preset режима")
+            .description("Enable/Disable Position Preset")
+            .defaultValue(true)
             .build()
     );
 
@@ -190,20 +188,20 @@ public class SwingAnimation extends Module {
         if (animationType.get() == Swipe) {
             animspeedMod = 1.08F;
         } else if (animationType.get() == Whirl) {
-            animspeedMod = 0.85F;
+            animspeedMod = 0.9F;
         }
     }
 
     private void applyPresetIfEnabled() {
         if (usePreset.get()) {
-            if (positionPreset.get() == First) {
+            if (animationType.get() == Swipe) {
                 mainPosX.set(1.45);
                 mainPosY.set(-0.6);
                 mainPosZ.set(-1.5);
                 mainRotX.set(-10.0);
                 mainRotY.set(0.0);
                 mainRotZ.set(0.0);
-            } else if (positionPreset.get() == Second) {
+            } else if (animationType.get() == Whirl) {
                 mainPosX.set(1.9);
                 mainPosY.set(-0.6);
                 mainPosZ.set(-1.5);
@@ -242,28 +240,13 @@ public class SwingAnimation extends Module {
     }
 
     public enum AnimationType {
-        Swipe("Swipe"),
-        Whirl("Whirl");
+        Swipe("1"),
+        Whirl("2"),
+        Third("3");
 
         private final String name;
 
         AnimationType(String name) {
-            this.name = name;
-        }
-
-        @Override
-        public String toString() {
-            return name;
-        }
-    }
-
-    public enum PositionPreset {
-        First("1"),
-        Second("2");
-
-        private final String name;
-
-        PositionPreset(String name) {
             this.name = name;
         }
 

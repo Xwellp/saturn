@@ -1,6 +1,6 @@
 ✅ Information
 
-Add-on for Meteor that adds useful modules for anarchy servers.
+idk
 
 ⬇️ Download
 
@@ -13,4 +13,4 @@ Available for Minecraft: 1.21.
 |----|-----------------|---------------------------------------------|
 | 1  | Fight Helper    | Automatically aims you and attack entities. |
 | 2  | Fight Mark      | Additional visual effect for Fight Helper.  |
-| 3  | Swing Animation | Custom animation for swing.                 |
+| 3  | Swing Animation | Custom animation for swinging.              |

@@ -70,8 +70,9 @@ public class SwingAnimationMixin {
         if (isMainHand) {
             float anim = (float) Math.sin(module.getSwingProgress() * Math.PI);
             switch (module.animationType.get()) {
-                case Swipe -> matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(anim * -90));
-                case Whirl -> matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(anim * 360));
+                case Swipe -> matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees((float) (anim * (-module.strength.get()*12))));
+                case Whirl -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees((float) (anim * (-module.strength.get()*12))));
+                case Third -> matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees((float) (anim * (-module.strength.get()*12))));
             }
         }
     }

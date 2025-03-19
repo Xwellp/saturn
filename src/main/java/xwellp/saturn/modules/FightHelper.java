@@ -387,6 +387,7 @@ public class FightHelper extends Module {
             if (currOnFallMode == OnFallMode.RandomValue) {
                 float min = Math.min(onFallMinRandomValue.get().floatValue(), onFallMaxRandomValue.get().floatValue());
                 float max = Math.max(onFallMinRandomValue.get().floatValue(), onFallMaxRandomValue.get().floatValue());
+                float average = (float) Math.abs(onFallMaxRandomValue.get() / onFallMinRandomValue.get());
                 randomOnFallFloat = min + mc.world.random.nextFloat() * (max - min);
             }
 
@@ -490,9 +491,6 @@ public class FightHelper extends Module {
         int width = window.getScaledWidth();
         int height = window.getScaledHeight();
 
-        double centerX = width / 2.0;
-        double centerY = height / 2.0;
-
         double fov = mc.options.getFov().getValue();
         double radius = (width / 2.0) * Math.tan(Math.toRadians(fovRange.get() / 2)) / Math.tan(Math.toRadians(fov / 2));
 
@@ -505,13 +503,13 @@ public class FightHelper extends Module {
 
         final int segments = 360;
         final double step = Math.PI * 2 / segments;
-        double prevX = centerX + radius;
-        double prevY = centerY;
+        double prevX = width + radius;
+        double prevY = height;
 
         for (int i = 1; i <= segments; i++) {
             double angle = i * step;
-            double x = centerX + Math.cos(angle) * radius;
-            double y = centerY + Math.sin(angle) * radius;
+            double x = width + Math.cos(angle) * radius;
+            double y = height + Math.sin(angle) * radius;
 
             Renderer2D.COLOR.line(prevX, prevY, x, y, circleColor);
 
